@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olağanüstü Özet Çıkartma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Olağanüstü Özet Çıkartma</h1>
+            <p>Bir URL girin, makalenizin özetini çıkaralım!</p>
+        </header>
+
+        <section class="form-container">
+            <form action="/" method="POST">
+                <label for="url">Hedef URL:</label>
+                <input type="text" id="url" name="url" placeholder="https://example.com" required>
+                <button type="submit" class="submit-btn">Özet Al</button>
+            </form>
+        </section>
+
+        <section class="summary-container">
+            {% if summary %}
+                <h2>Özet:</h2>
+                <p>{{ summary }}</p>
+            {% endif %}
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>
